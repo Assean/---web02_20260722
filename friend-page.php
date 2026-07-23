@@ -23,22 +23,24 @@
                     </div>
                 </div>
                 <div class="profile-content">
+
                     <section class="articles row g-3">
                         <?php
                             $articles = $pdo->query("SELECT * FROM `articles` WHERE `WP` = '$username'")->fetchAll();
                             if(count($articles) > 1){
+                                foreach($articles as $row){
                         ?>
                         <div class="col-12">
                             <article class="article-item card shadow-sm">
                                 <div class="card-body">
-                                    <h3 class="article-title card-title h5"></h3>
-                                    <time class="article-date text-muted small d-block mb-2"></time>
-                                    <p class="article-excerpt card-text"></p>
-                                    <a href="./article.php?id=" class="article-readmore btn btn-info text-white">閱讀更多</a>
+                                    <h3 class="article-title card-title h5">文章標題:<?=$row['title']?></h3>
+                                    <time class="article-date text-muted small d-block mb-2">發布日期:<?=$row['date']?></time>
+                                    <p class="article-excerpt card-text">文章摘要:<?=$row['content']?></p>
+                                    <a href="./article.php?id=<?=$row['id']?>" class="article-readmore btn btn-info text-white">閱讀更多</a>
                                 </div>
                             </article>
                         </div>
-                        <?php } ?>
+                        <?php }} ?>
                     </section>
                 </div>
                 <div class="profile-actions mt-4 text-center">
