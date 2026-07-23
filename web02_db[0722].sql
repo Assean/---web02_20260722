@@ -1,0 +1,334 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- 主機： 127.0.0.1
+-- 產生時間： 2026-07-22 10:52:07
+-- 伺服器版本： 10.4.32-MariaDB
+-- PHP 版本： 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- 資料庫： `web02_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `articles`
+--
+
+CREATE TABLE `articles` (
+  `id` int(11) NOT NULL,
+  `title` text NOT NULL,
+  `date` text NOT NULL DEFAULT '2026/07/22',
+  `content` text NOT NULL,
+  `WP` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 傾印資料表的資料 `articles`
+--
+
+INSERT INTO `articles` (`id`, `title`, `date`, `content`, `WP`) VALUES
+(1, 'test1', '2026/07/22', 'test1', 'admin'),
+(3, 'test2', '2026/07/22', 'test2', 'test2'),
+(4, 'hfihskjfhkj', '2026/07/22', 'kjfhdfgfkjjkhdkg', 'admin'),
+(5, 'f8yureoifjrkl', '2026/07/22', 'kjfhdfgfkjjkhdkggueoirjgoejgoirjgeoigjigjreoigjgiojger', 'admin'),
+(6, 'aerewewr', '2026/07/22', 'edfsdfd', 'admin'),
+(7, 'title', '2026/07/22', 'content', 'user1'),
+(8, '111', '2026/07/22', '222', 'user1'),
+(9, 'aaa', '2026/07/22', 'bbb', 'test2');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `form_result`
+--
+
+CREATE TABLE `form_result` (
+  `id` int(11) NOT NULL,
+  `game` text NOT NULL,
+  `name` text NOT NULL,
+  `email` text NOT NULL,
+  `good_or_nono` text NOT NULL,
+  `good_text` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 傾印資料表的資料 `form_result`
+--
+
+INSERT INTO `form_result` (`id`, `game`, `name`, `email`, `good_or_nono`, `good_text`) VALUES
+(5, '反應力測試', 'ewrewrewr', 'ewrer@vvv', '好', 'vvvv'),
+(8, '數字挑戰', 'sadsaa', 'aa@a', '好', 'aa'),
+(9, '數字挑戰', 'xcv', 'xcv@cx', '不好', 'cxv'),
+(10, '數字挑戰', 'wad', 'awdaw@bb.cc', '好', ''),
+(11, '數字挑戰', 'awdawd', 'test2@bb.cc', '不好', 'awdawd');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `friends`
+--
+
+CREATE TABLE `friends` (
+  `id` int(11) NOT NULL,
+  `send_user` text NOT NULL,
+  `you_user` text NOT NULL,
+  `status` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 傾印資料表的資料 `friends`
+--
+
+INSERT INTO `friends` (`id`, `send_user`, `you_user`, `status`) VALUES
+(1, 'admin', '1', 'friend'),
+(2, 'admin', '2', 'friend'),
+(3, 'admin', '3', 'friend'),
+(4, '4', 'admin', 'friend'),
+(10, 'admin', '10', 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `scores`
+--
+
+CREATE TABLE `scores` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `game_id` int(10) UNSIGNED NOT NULL,
+  `player_name` text NOT NULL,
+  `score` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `scores`
+--
+
+INSERT INTO `scores` (`id`, `game_id`, `player_name`, `score`, `created_at`) VALUES
+(1, 1, '小明', 95000, '2026-05-12 14:00:00'),
+(2, 1, '阿傑', 89000, '2026-05-12 19:00:00'),
+(3, 1, 'Wei', 82500, '2026-05-13 00:00:00'),
+(4, 1, 'judy', 82000, '2026-05-13 05:00:00'),
+(5, 1, 'mack', 70500, '2026-05-13 10:00:00'),
+(6, 1, 'Luna', 64000, '2026-05-13 15:00:00'),
+(7, 1, '阿哲', 58000, '2026-05-13 20:00:00'),
+(8, 1, 'Coco', 41000, '2026-05-14 01:00:00'),
+(9, 2, '靜香', 1280, '2026-05-14 06:00:00'),
+(10, 2, '大雄', 1140, '2026-05-14 11:00:00'),
+(11, 2, 'Amy', 1020, '2026-05-14 16:00:00'),
+(12, 2, '阿宏', 960, '2026-05-14 21:00:00'),
+(13, 2, '小美', 870, '2026-05-15 02:00:00'),
+(14, 2, 'Kevin', 760, '2026-05-15 07:00:00'),
+(15, 2, 'Nina', 650, '2026-05-15 12:00:00'),
+(16, 2, 'Ryan', 540, '2026-05-15 17:00:00'),
+(17, 3, 'Ryan', 985, '2026-05-15 22:00:00'),
+(18, 3, 'Tina', 940, '2026-05-16 03:00:00'),
+(19, 3, '阿凱', 900, '2026-05-16 08:00:00'),
+(20, 3, 'Nina', 860, '2026-05-16 13:00:00'),
+(21, 3, 'mack', 820, '2026-05-16 18:00:00'),
+(22, 3, '政宏', 770, '2026-05-16 23:00:00'),
+(23, 3, 'judy', 720, '2026-05-17 04:00:00'),
+(24, 3, '思妤', 660, '2026-05-17 09:00:00'),
+(25, 4, '阿傑', 48, '2026-05-17 14:00:00'),
+(26, 4, '小明', 44, '2026-05-17 19:00:00'),
+(27, 4, 'Coco', 41, '2026-05-18 00:00:00'),
+(28, 4, 'Kevin', 37, '2026-05-18 05:00:00'),
+(29, 4, 'Amy', 33, '2026-05-18 10:00:00'),
+(30, 4, '大雄', 29, '2026-05-18 15:00:00'),
+(31, 4, '靜香', 25, '2026-05-18 20:00:00'),
+(32, 4, 'Wei', 20, '2026-05-19 01:00:00'),
+(33, 5, 'Luna', 8800, '2026-05-19 06:00:00'),
+(34, 5, '思妤', 8250, '2026-05-19 11:00:00'),
+(35, 5, 'Wei', 7700, '2026-05-19 16:00:00'),
+(36, 5, '政宏', 7100, '2026-05-19 21:00:00'),
+(37, 5, '阿哲', 6400, '2026-05-20 02:00:00'),
+(38, 5, 'Tina', 5600, '2026-05-20 07:00:00'),
+(39, 5, 'mack', 4900, '2026-05-20 12:00:00'),
+(40, 5, 'judy', 4000, '2026-05-20 17:00:00'),
+(41, 1, '雅婷', 91000, '2026-05-20 18:00:00'),
+(42, 1, 'Leo', 77000, '2026-05-20 19:00:00'),
+(43, 1, '子翔', 68500, '2026-05-20 20:00:00'),
+(44, 1, 'Mia', 60000, '2026-05-20 21:00:00'),
+(45, 1, '冠廷', 53000, '2026-05-20 22:00:00'),
+(46, 1, 'Jack', 47500, '2026-05-20 23:00:00'),
+(47, 1, '詩涵', 38000, '2026-05-21 00:00:00'),
+(48, 1, 'Ella', 32000, '2026-05-21 01:00:00'),
+(49, 1, '宇辰', 27500, '2026-05-21 02:00:00'),
+(50, 1, 'Sam', 21000, '2026-05-21 03:00:00'),
+(51, 1, '佩珊', 16000, '2026-05-21 04:00:00'),
+(52, 1, '怡君', 12000, '2026-05-21 05:00:00'),
+(53, 2, 'Leo', 1210, '2026-05-21 06:00:00'),
+(54, 2, '雅婷', 1080, '2026-05-21 07:00:00'),
+(55, 2, '冠廷', 990, '2026-05-21 08:00:00'),
+(56, 2, 'Mia', 910, '2026-05-21 09:00:00'),
+(57, 2, '子翔', 830, '2026-05-21 10:00:00'),
+(58, 2, 'Ella', 720, '2026-05-21 11:00:00'),
+(59, 2, '詩涵', 610, '2026-05-21 12:00:00'),
+(60, 2, 'Jack', 500, '2026-05-21 13:00:00'),
+(61, 2, '宇辰', 460, '2026-05-21 14:00:00'),
+(62, 2, 'Sam', 410, '2026-05-21 15:00:00'),
+(63, 2, '佩珊', 360, '2026-05-21 16:00:00'),
+(64, 2, '怡君', 300, '2026-05-21 17:00:00'),
+(65, 3, '雅婷', 970, '2026-05-21 18:00:00'),
+(66, 3, 'Leo', 920, '2026-05-21 19:00:00'),
+(67, 3, '冠廷', 880, '2026-05-21 20:00:00'),
+(68, 3, 'Mia', 840, '2026-05-21 21:00:00'),
+(69, 3, '子翔', 790, '2026-05-21 22:00:00'),
+(70, 3, 'Jack', 740, '2026-05-21 23:00:00'),
+(71, 3, '詩涵', 690, '2026-05-22 00:00:00'),
+(72, 3, 'Ella', 640, '2026-05-22 01:00:00'),
+(73, 3, '宇辰', 600, '2026-05-22 02:00:00'),
+(74, 3, 'Sam', 560, '2026-05-22 03:00:00'),
+(75, 3, '佩珊', 520, '2026-05-22 04:00:00'),
+(76, 3, '怡君', 480, '2026-05-22 05:00:00'),
+(77, 4, 'Leo', 46, '2026-05-22 06:00:00'),
+(78, 4, '雅婷', 42, '2026-05-22 07:00:00'),
+(79, 4, '冠廷', 39, '2026-05-22 08:00:00'),
+(80, 4, 'Mia', 35, '2026-05-22 09:00:00'),
+(81, 4, '子翔', 31, '2026-05-22 10:00:00'),
+(82, 4, 'Jack', 27, '2026-05-22 11:00:00'),
+(83, 4, '詩涵', 23, '2026-05-22 12:00:00'),
+(84, 4, 'Ella', 19, '2026-05-22 13:00:00'),
+(85, 4, '宇辰', 17, '2026-05-22 14:00:00'),
+(86, 4, 'Sam', 15, '2026-05-22 15:00:00'),
+(87, 4, '佩珊', 13, '2026-05-22 16:00:00'),
+(88, 4, '怡君', 11, '2026-05-22 17:00:00'),
+(89, 5, '雅婷', 8500, '2026-05-22 18:00:00'),
+(90, 5, 'Leo', 7900, '2026-05-22 19:00:00'),
+(91, 5, '冠廷', 7300, '2026-05-22 20:00:00'),
+(92, 5, 'Mia', 6800, '2026-05-22 21:00:00'),
+(93, 5, '子翔', 6100, '2026-05-22 22:00:00'),
+(94, 5, 'Jack', 5300, '2026-05-22 23:00:00'),
+(95, 5, '詩涵', 4600, '2026-05-23 00:00:00'),
+(96, 5, 'Ella', 4200, '2026-05-23 01:00:00'),
+(97, 5, '宇辰', 3700, '2026-05-23 02:00:00'),
+(98, 5, 'Sam', 3300, '2026-05-23 03:00:00'),
+(99, 5, '佩珊', 2900, '2026-05-23 04:00:00'),
+(100, 5, '怡君', 2500, '2026-05-23 05:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` text NOT NULL,
+  `email` text NOT NULL,
+  `password` text NOT NULL,
+  `img` text NOT NULL DEFAULT './assets/img/default.jpg',
+  `bio` text NOT NULL DEFAULT '尚未填寫自我介紹'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 傾印資料表的資料 `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `img`, `bio`) VALUES
+(2, 'dsadsa', 'dfsdf@dsfsd', 'dsfdsf123', './assets/img/default.jpg', '尚未填寫自我介紹'),
+(3, 'aa', 'aa@aa', 'aa', './assets/img/default.jpg', '123123123123'),
+(4, '1', '1@1', '1', './assets/img/default.jpg', '尚未填寫自我介紹'),
+(5, 'admin', 'admin@admin.com', '1234', './assets/img/admin_img.jpg', 'M=y12312312313'),
+(6, '2', '2@2', '2', './assets/img/default.jpg', '尚未填寫自我介紹'),
+(7, '3', '3@3', '3', './assets/img/default.jpg', '尚未填寫自我介紹'),
+(8, '4', '4@4', '4', './assets/img/default.jpg', '尚未填寫自我介紹'),
+(9, '5', '5@5', '5', './assets/img/default.jpg', '尚未填寫自我介紹'),
+(10, '6', '6@6', '6', './assets/img/default.jpg', '尚未填寫自我介紹'),
+(11, '7', '7@7', '7', './assets/img/default.jpg', '尚未填寫自我介紹'),
+(12, '8', '8@8', '8', './assets/img/default.jpg', '尚未填寫自我介紹'),
+(13, '9', '9@9', '9', './assets/img/default.jpg', '尚未填寫自我介紹'),
+(14, '10', '10@10', '10', './assets/img/default.jpg', '尚未填寫自我介紹'),
+(15, '11', '11@11', '11', './assets/img/default.jpg', '尚未填寫自我介紹'),
+(16, '12', '12@12', '12', './assets/img/12_img.jpg', 'asdasdadddas12'),
+(17, '13', '13@13', '13', './assets/img/default.jpg', '尚未填寫自我介紹'),
+(18, '2222', '2222@2222', '2222', './assets/img/default.jpg', '123'),
+(19, 'user1', 'user1@aa.cc', '123456', './assets/img/user1_img.jpg', ''),
+(20, '', '', '', './assets/img/default.jpg', '尚未填寫自我介紹'),
+(21, 'test2', 'test2@bb.cc', '1234', './assets/img/default.jpg', '尚未填寫自我介紹');
+
+--
+-- 已傾印資料表的索引
+--
+
+--
+-- 資料表索引 `articles`
+--
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `form_result`
+--
+ALTER TABLE `form_result`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `friends`
+--
+ALTER TABLE `friends`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `scores`
+--
+ALTER TABLE `scores`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
+--
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `form_result`
+--
+ALTER TABLE `form_result`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `friends`
+--
+ALTER TABLE `friends`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `scores`
+--
+ALTER TABLE `scores`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
