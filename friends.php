@@ -109,7 +109,7 @@
                         <div class="request-item d-flex align-items-center gap-3 border-bottom pb-3 mb-3">
                             <img src="<?=$request_img_2['img']?>" width="90" height="110" class="request-avatar rounded object-fit-cover">
                             <div class="flex-grow-1">
-                                <div class="request-username fw-bold mb-2"><?=$request_img_2['username']?></div>
+                                <div class="request-username fw-bold mb-2"><?=$roooow['you_user']?></div>
                                 <button class="cancel-request-button btn btn-sm btn-warning text-white" onclick="location.href='./api/no.php?send_user=<?=$roooow['send_user']?>&you_user=<?=$roooow['you_user']?>&status=<?=$roooow['status']?>'">取消</button>
                             </div>
                         </div>
