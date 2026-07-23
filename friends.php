@@ -46,7 +46,7 @@
                             <?php
                                 $friend = $pdo->query("SELECT * FROM `friends` WHERE `status` = 'friend' AND (`send_user` = '{$_SESSION['user']}' OR `you_user` = '{$_SESSION['user']}')")->fetchAll();
                                 foreach($friend as $roow){
-                                if($roow['send_user'] = $_SESSION['user']){
+                                if($roow['send_user'] == $_SESSION['user']){
                                     $you_user = $roow['you_user'];
                                 }else{
                                     $you_user = $roow['send_user'];
