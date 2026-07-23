@@ -1,3 +1,37 @@
+<?php 
+// 1. 確保此檔案最上方沒有任何 HTML 結構或空白字元
+include_once "inc/header.php"; 
+
+// include_once "inc/header.php"; 
+
+            $action = $_GET['action'] ?? '';
+
+            // 如果是這兩種下載動作之一，才執行以下邏輯
+            if ($action === 'json' || $action === 'csv') {
+                ob_end_clean();
+                $data = $pdo->query("SELECT * FROM `form_result`")->fetchAll(PDO::FETCH_ASSOC);
+                
+                // 加強
+                header("Content-Disposition: attachment; filename=\"問卷回應.{$action}\"");
+                // header("Content-Disposition: attachment; filename=\"問卷回應 . {$action}\"");
+                if ($action === 'json') {
+                    header('Content-Type: application/json; charset=utf-8');
+                    echo json_encode($data);
+                    
+                } elseif ($action === 'csv') {
+                    
+                    header('Content-Type: text/csv; charset=utf-8');
+                    $out = fopen('php://output', 'w');
+                    fputcsv($out, ['id', '姓名', '電子郵件', '評價', '寶貴意見']); 
+                    foreach ($data as $row) {
+                        fputcsv($out, $row); 
+                    }
+                    fclose($out);
+                }
+                
+                exit;
+            }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +42,6 @@
 </head>
 <body class="bg-light">
     <div id="admin" class="container-fluid p-4">
-        <?php include_once "inc/header.php" ?>
         <div class="row g-2 mb-4">
             <div class="col-12 col-md-3">
                 <a href="./admin.php" class="btn btn-info w-100 text-white">基本設定</a>
@@ -23,6 +56,9 @@
                 <a href="./form.php" class="btn btn-info w-100 text-white">表單</a>
             </div>
         </div>
+        
+        <button class="btn btn-success" onclick="location.href='?action=csv'">下載 CSV</button>
+        <button class="btn btn-warning text-white" onclick="location.href='?action=json'">下載 JSON</button>
 
         <div class="row">
             <div class="col-12">
