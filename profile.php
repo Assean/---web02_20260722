@@ -38,6 +38,10 @@
                 // 簡介
                 if(isset($_POST['bio'])){
                     $bio = $_POST['bio'];
+                    if($bio == ''){
+                        echo "<script>alert('簡介更新失敗');location.href='profile.php'</script>";
+                        exit;    
+                    }
                     $pdo->exec("UPDATE `users` SET `bio` = '$bio' WHERE `users`.`username` = '{$_SESSION['user']}'");
                     echo "<script>location.href='profile.php'</script>";
                     exit;

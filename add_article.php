@@ -18,7 +18,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label">文章內容</label>
-                        <textarea name="content" id="content" class="form-control" cols="30" rows="10"></textarea>
+                        <textarea name="content" id="content" class="form-control article-content-input" cols="30" rows="10"></textarea>
                     </div>
                     <button class="article-submit-button btn btn-info text-white w-100">送出</button>
                 </form>
