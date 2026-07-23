@@ -30,8 +30,8 @@
             $nono_row = $pdo->query("SELECT COUNT(id) AS nono FROM form_result WHERE good_or_nono = '不好';")->fetch();
             $nono = $nono_row['nono'];
             $tol = $good + $nono;
-            $good_p = ($good / $tol) *100;
-            $nono_p = ($nono / $tol) *100;
+            $good_p = round(($good / $tol) *100,2);
+            $nono_p = round(($nono / $tol) *100,2);
         ?>
         <div class="row g-3">
             <div class="good col-6">
