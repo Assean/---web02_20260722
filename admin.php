@@ -37,11 +37,11 @@
                 </div>
                 <div class="col-12 col-md-4">
                     <label for="start_time" class="form-label fw-bold">開始時間</label>
-                    <input type="datetime-local" name="start_time" id="start_time" class="form-control">
+                    <input type="datetime-local" name="start_time" id="start_time" class="form-control" required>
                 </div>
                 <div class="col-12 col-md-4">
                     <label for="end_time" class="form-label fw-bold">結束時間</label>
-                    <input type="datetime-local" name="end_time" id="end_time" class="form-control">
+                    <input type="datetime-local" name="end_time" id="end_time" class="form-control" required>
                 </div>
                 <div class="col-12 text-end mt-4">
                     <button type="submit" class="btn btn-info text-white fw-bold px-4">儲存</button>
